@@ -1,0 +1,3 @@
+# IR Stock Calculator
+
+Work in progress...
