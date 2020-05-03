@@ -1,5 +1,6 @@
 import re
 import csv
+from typing import Dict
 from .stocks import Cost, Transaction, Stock
 
 
@@ -48,7 +49,7 @@ def process_stock_operations(stock_operations, stocks):
             op = process_transaction(stock_operations[start:end])
             if not op.ticker in stocks:
                 stocks[op.ticker] = Stock(op.ticker)
-            stocks[op.ticker].add_operation(op)
+            stocks[op.ticker].add_transaction(op)
             start = -1
 
 
@@ -67,7 +68,7 @@ def sanitize(content):
     return new_content
 
 
-def process_csv(file):
+def process_csv(file) -> Dict[str, Stock]:
     stocks = {}
 
     with open(file, newline="") as csvfile:
