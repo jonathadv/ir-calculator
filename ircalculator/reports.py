@@ -33,7 +33,7 @@ def build_transactions(stock: Stock):
 
     for p in stock.get_transactions():
         report.append(str(p))
-        report.append(f"\tpurchased: {p.total()}")
+        report.append(f"\t{p.trans_type}: {p.total()}")
         for c in p.costs:
             report.append(f"\t\t{c}")
 
@@ -64,3 +64,7 @@ Amount + Cost (RS): {total_amount}
 """
         report.append(content)
     return report
+
+
+def build_for_spreadsheet(stocks: List[Stock]) -> List[str]:
+    pass

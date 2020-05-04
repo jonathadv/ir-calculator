@@ -10,6 +10,9 @@ class Cost:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}={self.value})"
 
+    def __str__(self):
+        return f"{self.name}={self.value}"
+
 
 class Transaction:
     SELL = "SELL"
@@ -71,7 +74,7 @@ class Transaction:
     def __str__(self):
         return (
             f"[{self.date.strftime('%Y-%m-%d')}] | {self.trans_type} | "
-            f"{self.shares} x {self.price_per_share} = {self.total()}"
+            f"{self.shares} x {self.price_per_share} = {self.total()} (+costs={self.total_with_cost()})"
         )
 
 
